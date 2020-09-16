@@ -1,0 +1,15 @@
+<h1>My tasks</h1>
+
+<ol>
+  <% @tasks.each do |task| %>
+    <li class="field">
+      <%= check_box_tag nil, nil, task.completed, disabled: true %>
+      <%= link_to "#{task.title}", task_path(task) %>
+      <%= link_to 'Remove', task_path(task), class: "remove-link", method: :delete, data: { confirm: 'Are you Sure?', disable_with: "Processing..." } %>
+    </li>
+  <% end %>
+</ol>
+
+<p>
+  <%= link_to 'Add Task', new_task_path %>
+</p>
